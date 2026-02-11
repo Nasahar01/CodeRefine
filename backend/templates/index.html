@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>CodeRefine AI</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gradient-to-br from-gray-900 via-black to-gray-900 text-white min-h-screen flex items-center justify-center">
+
+<div class="w-full max-w-5xl bg-gray-800/40 backdrop-blur-lg rounded-2xl shadow-2xl p-6 border border-gray-700">
+
+  <h1 class="text-4xl font-bold mb-6 text-center">
+    🤖 CodeRefine AI
+    <span class="text-blue-400 text-sm block">AI Code Review & Rewrite Agent</span>
+  </h1>
+
+  <!-- Controls -->
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+
+    <!-- Language -->
+    <select id="language" class="p-2 rounded bg-gray-900 border border-gray-600">
+      <option value="Python">Python</option>
+      <option value="JavaScript">JavaScript</option>
+      <option value="Java">Java</option>
+      <option value="C++">C++</option>
+    </select>
+
+    <!-- Mode -->
+    <select id="mode" class="p-2 rounded bg-gray-900 border border-gray-600">
+      <option value="review">🔍 Review Code</option>
+      <option value="rewrite">✨ Rewrite Code</option>
+    </select>
+
+    <!-- File Upload -->
+    <input type="file" id="fileInput"
+      class="p-2 rounded bg-gray-900 border border-gray-600 text-sm"
+      onchange="loadFile()" />
+  </div>
+
+  <!-- Code Input -->
+  <textarea id="code"
+    class="w-full h-52 bg-gray-900 border border-gray-600 rounded p-3 font-mono text-sm"
+    placeholder="Paste your code here..."></textarea>
+
+  <!-- Buttons -->
+  <div class="flex gap-3 mt-4">
+    <button onclick="processCode()"
+      class="bg-blue-600 hover:bg-blue-700 px-5 py-2 rounded font-semibold transition">
+      🚀 Run AI
+    </button>
+
+    <button onclick="clearCode()"
+      class="bg-gray-600 hover:bg-gray-700 px-5 py-2 rounded font-semibold transition">
+      🧹 Clear
+    </button>
+  </div>
+
+  <!-- Output -->
+  <div id="review-panels" class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6 hidden">
+
+  <div class="bg-red-900/40 border border-red-500 rounded-lg p-4">
+    <h2 class="text-red-400 font-bold text-lg">🐞 Bugs</h2>
+    <p id="bugs" class="mt-2 text-sm"></p>
+  </div>
+
+  <div class="bg-yellow-900/40 border border-yellow-500 rounded-lg p-4">
+    <h2 class="text-yellow-400 font-bold text-lg">⚡ Performance</h2>
+    <p id="performance" class="mt-2 text-sm"></p>
+  </div>
+
+  <div class="bg-purple-900/40 border border-purple-500 rounded-lg p-4">
+    <h2 class="text-purple-400 font-bold text-lg">🔒 Security</h2>
+    <p id="security" class="mt-2 text-sm"></p>
+  </div>
+
+  <div class="bg-blue-900/40 border border-blue-500 rounded-lg p-4">
+    <h2 class="text-blue-400 font-bold text-lg">📘 Best Practices</h2>
+    <p id="best_practices" class="mt-2 text-sm"></p>
+  </div>
+
+</div>
+
+<div id="optimized-panel" class="mt-6 hidden">
+  <h2 class="text-green-400 font-bold text-lg mb-2">✅ Optimized Code</h2>
+  <pre id="optimized_code"
+    class="bg-black border border-green-500 rounded-lg p-4 text-green-300 text-sm overflow-auto"></pre>
+</div>
+
+</div>
+
+<script src="/static/script.js"></script>
+</body>
+</html>
